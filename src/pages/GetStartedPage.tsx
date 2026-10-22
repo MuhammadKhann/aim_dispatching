@@ -34,6 +34,17 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setFormData(prev => ({
+      ...prev,
+      fullName: prev.fullName.trim().slice(0, 80),
+      companyName: prev.companyName.trim().slice(0, 100),
+      phone: prev.phone.trim().slice(0, 30),
+      email: prev.email.trim().slice(0, 100),
+      mcNumber: prev.mcNumber.trim().slice(0, 20),
+      dotNumber: prev.dotNumber.trim().slice(0, 20),
+      preferredLanes: prev.preferredLanes.trim().slice(0, 150),
+      additionalInfo: prev.additionalInfo.trim().slice(0, 1000)
+    }));
     setPreviewModalOpen(true);
   };
 

@@ -14,24 +14,15 @@ import { ShieldCheck, ArrowRight } from 'lucide-react';
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
 
-  // Sync hash routing if user visits with #pricing, #services, etc.
+  // Clean initial hash if any exists to keep URL clean and static
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') as PageId;
-      const validPages: PageId[] = ['home', 'about', 'services', 'pricing', 'faq', 'contact', 'get-started'];
-      if (validPages.includes(hash)) {
-        setCurrentPage(hash);
-      }
-    };
-
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
   }, []);
 
   const handleNavigate = (page: PageId) => {
     setCurrentPage(page);
-    window.location.hash = page;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

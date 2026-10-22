@@ -19,6 +19,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Trim and sanitize inputs
+    setFormData(prev => ({
+      ...prev,
+      name: prev.name.trim().slice(0, 80),
+      company: prev.company.trim().slice(0, 100),
+      email: prev.email.trim().slice(0, 100),
+      phone: prev.phone.trim().slice(0, 30),
+      message: prev.message.trim().slice(0, 1000)
+    }));
     setSubmitted(true);
   };
 
