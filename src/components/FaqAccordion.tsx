@@ -44,16 +44,16 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({
             placeholder="Search dispatching questions (pricing, broker setup, loads...)"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] placeholder:text-[#667085]"
+            className="w-full pl-10 pr-4 py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] placeholder:text-[#667085]"
           />
         </div>
 
-        <div className="flex flex-wrap gap-1 bg-slate-200/60 p-1 rounded-md shrink-0">
+        <div className="flex items-center gap-1 bg-slate-200/60 p-1 rounded-md shrink-0 overflow-x-auto no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded transition-colors ${
+              className={`px-3 py-1.5 text-xs font-semibold rounded whitespace-nowrap transition-colors min-h-[36px] flex items-center ${
                 selectedCategory === cat
                   ? 'bg-white text-[#0B1F33] shadow-xs'
                   : 'text-[#667085] hover:text-[#0B1F33]'

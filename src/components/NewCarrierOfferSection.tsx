@@ -12,9 +12,9 @@ export const NewCarrierOfferSection: React.FC<NewCarrierOfferSectionProps> = ({
   compact = false 
 }) => {
   return (
-    <section className={`relative overflow-hidden ${compact ? 'py-10' : 'py-16'} bg-white border-y border-slate-200`}>
+    <section className={`relative overflow-hidden ${compact ? 'py-8 sm:py-10' : 'py-10 sm:py-16'} bg-white border-y border-slate-200`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#0B1F33] rounded-lg p-8 sm:p-10 lg:p-12 text-white shadow-md relative overflow-hidden">
+        <div className="bg-[#0B1F33] rounded-lg p-5 sm:p-8 lg:p-12 text-white shadow-md relative overflow-hidden">
           
           {/* Subtle background graphic line */}
           <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[#1677FF]/10 blur-3xl pointer-events-none" />

@@ -30,18 +30,18 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-[#F5F7FA] text-[#0B1F33]">
       
       {/* Top Promotional Ribbon */}
-      <div className="bg-[#12263F] border-b border-[#1E3A5F] text-slate-300 text-xs py-2 px-4 text-center">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
-          <span className="text-[#1677FF] font-semibold flex items-center gap-1">
+      <div className="bg-[#12263F] border-b border-[#1E3A5F] text-slate-300 text-[11px] sm:text-xs py-1.5 px-3 text-center">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
+          <span className="text-[#1677FF] font-semibold inline-flex items-center gap-1">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>New Carrier Special:</span>
+            <span>Introductory Offer:</span>
           </span>
-          <span>Qualifying new carriers can start with 1–3 fee-free loads.</span>
+          <span className="truncate max-w-[210px] sm:max-w-none">Qualifying carriers start with 1–3 fee-free loads.</span>
           <button
             onClick={() => handleNavigate('pricing')}
-            className="text-white hover:text-[#1677FF] font-semibold underline underline-offset-2 ml-1 inline-flex items-center gap-0.5"
+            className="text-white hover:text-[#1677FF] font-semibold underline underline-offset-2 ml-0.5 inline-flex items-center gap-0.5 whitespace-nowrap"
           >
-            <span>View Offer Terms</span>
+            <span>Details</span>
             <ArrowRight className="w-3 h-3" />
           </button>
         </div>

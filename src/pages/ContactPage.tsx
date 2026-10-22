@@ -170,7 +170,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="e.g. John Miller"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
 
@@ -183,7 +183,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                           value={formData.company}
                           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                           placeholder="e.g. Miller Logistics LLC"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
                     </div>
@@ -199,7 +199,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="carrier@example.com"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
 
@@ -212,7 +212,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="(555) 000-0000"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
                     </div>
@@ -224,7 +224,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       <select
                         value={formData.topic}
                         onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                        className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                        className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                       >
                         <option>General Dispatch Inquiry</option>
                         <option>Rates & 6%–8% Pricing Question</option>
@@ -245,7 +245,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Tell us about your equipment, preferred lanes, or any specific questions..."
-                        className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                        className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
                       />
                     </div>
 

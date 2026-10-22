@@ -21,16 +21,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
     <div className="space-y-0">
       
       {/* 1. HERO HEADER */}
-      <section className="bg-[#0B1F33] text-white py-16 sm:py-20 border-b border-[#1E3A5F]">
+      <section className="bg-[#0B1F33] text-white py-10 sm:py-16 border-b border-[#1E3A5F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#1677FF] bg-[#1677FF]/10 px-3 py-1 rounded inline-block">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#1677FF] bg-[#1677FF]/10 px-3 py-1 rounded inline-block">
               About AIM Dispatching
             </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
               A Carrier-First Logistics Partner Dedicated to Your Bottom Line
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
               AIM Dispatching was founded with one clear commitment: helping commercial truck drivers and carrier fleets simplify dispatch operations and spend more time running their business safely.
             </p>
           </div>
@@ -38,12 +38,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 2. CORE PHILOSOPHY & COMMITMENT */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      <section className="py-12 sm:py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left 6 cols: Text */}
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <div>
                 <span className="text-xs font-semibold text-[#1677FF] uppercase tracking-wider block mb-1">
                   Service Philosophy
@@ -53,7 +53,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 </h2>
               </div>
 
-              <div className="space-y-4 text-sm text-[#667085] leading-relaxed">
+              <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-[#667085] leading-relaxed">
                 <p>
                   Driving a commercial truck across state lines demands undivided attention. Yet independent carriers and owner-operators are too often expected to split their focus: constantly refreshing load boards, haggling with broker agents over rate confirmations, managing certificate of insurance filings, and invoicing paperwork.
                 </p>
@@ -66,7 +66,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               </div>
 
               <div className="p-4 bg-[#F5F7FA] border border-slate-200 rounded-md">
-                <div className="flex items-center gap-2 text-sm font-bold text-[#0B1F33] mb-1">
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-[#0B1F33] mb-1">
                   <ShieldCheck className="w-4 h-4 text-[#1677FF]" />
                   <span>The AIM Dispatching Guarantee of Control</span>
                 </div>
@@ -77,13 +77,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </div>
 
             {/* Right 6 cols: Photography */}
-            <div className="lg:col-span-6 space-y-4">
+            <div className="lg:col-span-6 space-y-3 sm:space-y-4">
               <div className="rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-white">
                 <img
                   src={ASSETS.logisticsYard}
                   alt="Modern commercial freight terminal with semi-trucks parked at distribution docks"
-                  className="w-full h-[360px] sm:h-[420px] object-cover"
+                  className="w-full h-[220px] sm:h-[360px] lg:h-[420px] object-cover"
                   loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const el = e.currentTarget;

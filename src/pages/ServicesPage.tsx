@@ -38,16 +38,16 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
     <div className="space-y-0">
       
       {/* 1. HERO HEADER */}
-      <section className="bg-[#0B1F33] text-white py-16 sm:py-20 border-b border-[#1E3A5F]">
+      <section className="bg-[#0B1F33] text-white py-10 sm:py-16 border-b border-[#1E3A5F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#1677FF] bg-[#1677FF]/10 px-3 py-1 rounded inline-block">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#1677FF] bg-[#1677FF]/10 px-3 py-1 rounded inline-block">
               Dedicated Carrier Services
             </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
               End-to-End Dispatching Backed by Real Logistics Expertise
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
               From finding profitable freight and securing top rates to managing carrier packets, BOLs, and factoring documentation, AIM Dispatching handles your complete back-office operations.
             </p>
           </div>
@@ -55,7 +55,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 2. SERVICES LIST */}
-      <section className="py-16 bg-[#F5F7FA] border-b border-slate-200">
+      <section className="py-10 sm:py-16 bg-[#F5F7FA] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-2">
@@ -75,9 +75,9 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                 <div
                   key={service.id}
                   id={service.id}
-                  className="bg-white border border-slate-200 rounded-lg p-6 sm:p-8 shadow-xs hover:border-[#1677FF]/40 transition-colors"
+                  className="bg-white border border-slate-200 rounded-lg p-5 sm:p-8 shadow-xs hover:border-[#1677FF]/40 transition-colors"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
                     
                     {/* Left 8 cols: Core Service Details */}
                     <div className="lg:col-span-8 space-y-4">
@@ -169,24 +169,24 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 3. MID-PAGE PROOF SECTION */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
-            <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs font-semibold text-[#1677FF] uppercase tracking-wider">
+            <div className="lg:col-span-5 space-y-3 sm:space-y-4">
+              <span className="text-[11px] sm:text-xs font-semibold text-[#1677FF] uppercase tracking-wider">
                 Fleet Adaptability
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B1F33]">
                 Specialized Handling for Open Deck & Flatbed Freight
               </h2>
-              <p className="text-sm text-[#667085] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#667085] leading-relaxed">
                 Open deck, step deck, and hotshot freight require careful load verification, tarp fee negotiations, and weight regulation compliance. Our dispatchers know the exact questions to ask shippers before you confirm the run.
               </p>
               <div className="pt-2">
                 <button
                   onClick={() => onNavigate('get-started')}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#1677FF] hover:text-[#0e63d8]"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#1677FF] hover:text-[#0e63d8]"
                 >
                   <span>Dispatch Flatbeds & Specialized Rig</span>
                   <ArrowRight className="w-4 h-4" />
@@ -195,12 +195,13 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="rounded-lg overflow-hidden border border-slate-200 shadow-sm">
+              <div className="rounded-lg overflow-hidden border border-slate-200 shadow-sm bg-white">
                 <img
                   src={ASSETS.flatbedCargo}
                   alt="Commercial flatbed truck with tarped cargo on highway staging area"
-                  className="w-full h-[320px] sm:h-[380px] object-cover"
+                  className="w-full h-[220px] sm:h-[340px] lg:h-[380px] object-cover"
                   loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const el = e.currentTarget;
@@ -220,18 +221,18 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       <NewCarrierOfferSection onNavigate={onNavigate} />
 
       {/* 5. CTA */}
-      <section className="py-16 bg-[#0B1F33] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+      <section className="py-12 sm:py-16 bg-[#0B1F33] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-5">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
             Simplify Your Dispatch Operations Today
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-xl mx-auto">
             Experience reliable dispatch support tailored to your equipment, lanes, and schedule.
           </p>
           <div className="pt-2">
             <button
               onClick={() => onNavigate('get-started')}
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded-md transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded-md transition-colors"
             >
               <span>Get Started</span>
               <ArrowRight className="w-4 h-4" />

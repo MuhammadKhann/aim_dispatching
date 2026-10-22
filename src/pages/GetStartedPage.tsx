@@ -165,7 +165,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                           value={formData.fullName}
                           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                           placeholder="e.g. Robert Vance"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
 
@@ -179,7 +179,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                           value={formData.companyName}
                           onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                           placeholder="e.g. Vance Trucking LLC"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
                     </div>
@@ -195,7 +195,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="(555) 000-0000"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
 
@@ -209,7 +209,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="dispatch@vancetrucking.com"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
                     </div>
@@ -232,7 +232,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                           value={formData.mcNumber}
                           onChange={(e) => setFormData({ ...formData, mcNumber: e.target.value })}
                           placeholder="MC-XXXXXX"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
 
@@ -246,7 +246,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                           value={formData.dotNumber}
                           onChange={(e) => setFormData({ ...formData, dotNumber: e.target.value })}
                           placeholder="DOT-XXXXXXX"
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         />
                       </div>
                     </div>
@@ -266,7 +266,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                         <select
                           value={formData.truckType}
                           onChange={(e) => setFormData({ ...formData, truckType: e.target.value })}
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         >
                           {TRUCK_EQUIPMENT_DATA.map((t) => (
                             <option key={t.id} value={t.name}>
@@ -284,7 +284,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                         <select
                           value={formData.truckCount}
                           onChange={(e) => setFormData({ ...formData, truckCount: e.target.value })}
-                          className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                          className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                         >
                           <option>1 Truck (Owner-Operator)</option>
                           <option>2 – 3 Trucks</option>
@@ -304,7 +304,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                         value={formData.preferredLanes}
                         onChange={(e) => setFormData({ ...formData, preferredLanes: e.target.value })}
                         placeholder="e.g. Midwest to Southeast, Texas Triangle, All 48 OTR..."
-                        className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                        className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33] min-h-[44px]"
                       />
                     </div>
 
@@ -317,7 +317,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                         value={formData.additionalInfo}
                         onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
                         placeholder="Mention any special equipment (liftgate, tarps, ramps), factoring company name, or home time expectations..."
-                        className="w-full px-3.5 py-2.5 text-xs sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
+                        className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#1677FF] text-[#0B1F33]"
                       />
                     </div>
                   </div>
@@ -348,10 +348,10 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
 
       {/* 3. CARRIER PROFILE DEMO MODAL */}
       {previewModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-lg shadow-xl max-w-lg w-full overflow-hidden border border-slate-200 animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs">
+          <div className="bg-white rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto border border-slate-200 animate-in fade-in duration-200">
             
-            <div className="bg-[#0B1F33] text-white px-6 py-4 flex items-center justify-between">
+            <div className="bg-[#0B1F33] text-white px-5 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between sticky top-0 z-10">
               <div className="flex items-center gap-2">
                 <FileCheck2 className="w-5 h-5 text-[#1677FF]" />
                 <span className="font-bold text-sm">Carrier Intake Profile Preview</span>
@@ -365,7 +365,7 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
               </button>
             </div>
 
-            <div className="p-6 space-y-4 text-xs sm:text-sm text-[#0B1F33]">
+            <div className="p-4 sm:p-6 space-y-4 text-xs sm:text-sm text-[#0B1F33]">
               <div className="p-3 bg-emerald-50 border border-emerald-200 rounded text-emerald-800 text-xs">
                 <strong>Profile Verification Success:</strong> All required fields for carrier setup have been validated.
               </div>

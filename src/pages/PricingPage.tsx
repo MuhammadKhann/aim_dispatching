@@ -21,16 +21,16 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
     <div className="space-y-0">
       
       {/* 1. HERO HEADER */}
-      <section className="bg-[#0B1F33] text-white py-16 sm:py-20 border-b border-[#1E3A5F]">
+      <section className="bg-[#0B1F33] text-white py-10 sm:py-16 border-b border-[#1E3A5F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#1677FF] bg-[#1677FF]/10 px-3 py-1 rounded inline-block">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
+            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#1677FF] bg-[#1677FF]/10 px-3 py-1 rounded inline-block">
               Transparent Pricing Model
             </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Flexible Dispatching — 6% to 8% Per Load
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
               Our dispatching fee typically ranges from 6% to 8% per load depending on your equipment, operation, and service agreement. Our goal is to provide reliable dispatch support without complicated pricing.
             </p>
           </div>
@@ -38,11 +38,11 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 2. MAIN PRICING PLAN CARD */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="max-w-4xl mx-auto bg-[#F5F7FA] border border-slate-200 rounded-lg p-8 sm:p-10 shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div className="max-w-4xl mx-auto bg-[#F5F7FA] border border-slate-200 rounded-lg p-5 sm:p-8 md:p-10 shadow-xs">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
               
               {/* Left 7 cols: Plan description */}
               <div className="md:col-span-7 space-y-4">
@@ -60,7 +60,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
                   </p>
                 </div>
 
-                <p className="text-sm text-[#0B1F33] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#0B1F33] leading-relaxed">
                   We align our incentives with yours: when we negotiate higher-paying loads, your revenue increases. If your truck is not rolling, you owe zero dispatch fees.
                 </p>
 
@@ -81,12 +81,12 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Right 5 cols: CTA box */}
-              <div className="md:col-span-5 bg-white border border-slate-200 rounded-md p-6 space-y-4 text-center">
+              <div className="md:col-span-5 bg-white border border-slate-200 rounded-md p-5 sm:p-6 space-y-4 text-center">
                 <div className="space-y-1">
                   <div className="text-xs font-semibold text-[#667085] uppercase tracking-wider">
                     Ready to Talk?
                   </div>
-                  <div className="text-lg font-bold text-[#0B1F33]">
+                  <div className="text-base sm:text-lg font-bold text-[#0B1F33]">
                     Get an Exact Rate for Your Rig
                   </div>
                   <p className="text-xs text-[#667085]">
@@ -117,7 +117,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       <NewCarrierOfferSection onNavigate={onNavigate} />
 
       {/* 4. INTERACTIVE FEE SIMULATOR */}
-      <section className="py-16 bg-[#F5F7FA] border-b border-slate-200">
+      <section className="py-10 sm:py-16 bg-[#F5F7FA] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <DispatchFeeSimulator onNavigate={onNavigate} />
@@ -126,25 +126,25 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 5. INCLUDED VS NO HIDDEN FEES COMPARISON */}
-      <section className="py-16 bg-white border-b border-slate-200">
+      <section className="py-10 sm:py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="max-w-2xl mx-auto text-center mb-12 space-y-2">
-            <span className="text-xs font-semibold text-[#1677FF] uppercase tracking-wider">
+          <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12 space-y-2">
+            <span className="text-[11px] sm:text-xs font-semibold text-[#1677FF] uppercase tracking-wider">
               Transparency First
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0B1F33]">
               What Is Included vs. What We Never Charge
             </h2>
-            <p className="text-sm text-[#667085]">
+            <p className="text-xs sm:text-sm text-[#667085]">
               Clear expectations build reliable long-term carrier relationships.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
             
             {/* Included */}
-            <div className="bg-[#F5F7FA] border border-slate-200 rounded-lg p-6 space-y-4">
+            <div className="bg-[#F5F7FA] border border-slate-200 rounded-lg p-5 sm:p-6 space-y-4">
               <div className="flex items-center gap-2 text-sm font-bold text-[#0B1F33]">
                 <Check className="w-5 h-5 text-[#1677FF]" />
                 <span>Included in the 6%–8% Dispatch Fee</span>
@@ -178,7 +178,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
             </div>
 
             {/* Never Charged */}
-            <div className="bg-white border border-slate-200 rounded-lg p-6 space-y-4">
+            <div className="bg-white border border-slate-200 rounded-lg p-5 sm:p-6 space-y-4">
               <div className="flex items-center gap-2 text-sm font-bold text-[#0B1F33]">
                 <X className="w-5 h-5 text-red-500" />
                 <span>Zero Hidden Fees & Surcharges</span>
@@ -186,7 +186,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
               <ul className="space-y-2.5 text-xs sm:text-sm text-[#667085]">
                 <li className="flex items-start gap-2">
                   <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                  <span>No account onboarding or setup setup fees</span>
+                  <span>No account onboarding or setup fees</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <X className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
@@ -217,18 +217,18 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 6. BOTTOM CTA */}
-      <section className="py-16 bg-[#0B1F33] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+      <section className="py-12 sm:py-16 bg-[#0B1F33] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-5">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
             Get Started With AIM Dispatching
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-xl mx-auto">
             Experience reliable dispatch support with our new carrier promotional offer and keep 100% of your initial freight gross.
           </p>
           <div className="pt-2">
             <button
               onClick={() => onNavigate('get-started')}
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded-md transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded-md transition-colors"
             >
               <span>Get Started With AIM Dispatching</span>
               <ArrowRight className="w-4 h-4" />

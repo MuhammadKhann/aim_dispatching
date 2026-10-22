@@ -38,13 +38,13 @@ export const EquipmentFilterGrid: React.FC<EquipmentFilterGridProps> = ({
       )}
 
       {/* Category filter tabs */}
-      <div className="flex items-center justify-center">
-        <div className="inline-flex flex-wrap gap-1 p-1 bg-slate-200/60 rounded-lg">
+      <div className="flex items-center justify-start sm:justify-center overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div className="inline-flex gap-1 p-1 bg-slate-200/70 rounded-lg shrink-0">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
+              className={`px-3.5 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 min-h-[38px] ${
                 activeCategory === cat
                   ? 'bg-white text-[#0B1F33] shadow-xs'
                   : 'text-[#667085] hover:text-[#0B1F33]'
@@ -57,7 +57,7 @@ export const EquipmentFilterGrid: React.FC<EquipmentFilterGridProps> = ({
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredEquipment.map((equipment) => (
           <div
             key={equipment.id}

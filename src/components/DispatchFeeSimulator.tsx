@@ -26,14 +26,14 @@ export const DispatchFeeSimulator: React.FC<DispatchFeeSimulatorProps> = ({ onNa
   const estimatedSavingsOffer = Math.round((weeklyGross / 3) * (feeRate / 100) * 2); // 2 free loads estimate
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-6 sm:p-8 shadow-sm">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+    <div className="bg-white border border-slate-200 rounded-lg p-4 sm:p-8 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-slate-100">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold text-[#1677FF] uppercase tracking-wider">
             <Calculator className="w-4 h-4" />
             <span>Transparent Rate Calculator</span>
           </div>
-          <h3 className="text-xl font-bold text-[#0B1F33] mt-1">
+          <h3 className="text-lg sm:text-xl font-bold text-[#0B1F33] mt-1">
             Dispatch Fee & Carrier Retention Estimator
           </h3>
           <p className="text-xs sm:text-sm text-[#667085] mt-0.5">
@@ -41,12 +41,12 @@ export const DispatchFeeSimulator: React.FC<DispatchFeeSimulatorProps> = ({ onNa
           </p>
         </div>
 
-        <div className="flex items-center gap-1 bg-[#F5F7FA] p-1 rounded-md border border-slate-200">
+        <div className="flex items-center gap-1 bg-[#F5F7FA] p-1 rounded-md border border-slate-200 self-start sm:self-auto">
           {[6, 7, 8].map((rate) => (
             <button
               key={rate}
               onClick={() => setFeeRate(rate)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded transition-colors ${
+              className={`px-3 py-1.5 text-xs font-semibold rounded transition-colors min-h-[38px] ${
                 feeRate === rate
                   ? 'bg-[#0B1F33] text-white shadow-xs'
                   : 'text-[#667085] hover:text-[#0B1F33]'
