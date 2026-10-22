@@ -48,7 +48,7 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({
           />
         </div>
 
-        <div className="flex items-center gap-1 bg-slate-200/60 p-1 rounded-md shrink-0 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-1 bg-slate-200/60 p-1 rounded-md shrink-0 overflow-x-auto no-scrollbar w-full sm:w-auto max-w-full">
           {categories.map((cat) => (
             <button
               key={cat}

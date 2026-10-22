@@ -38,11 +38,11 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 2. MAIN PRICING PLAN CARD */}
-      <section className="py-10 sm:py-16 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 sm:py-16 bg-white border-b border-slate-200 w-full max-w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           
-          <div className="max-w-4xl mx-auto bg-[#F5F7FA] border border-slate-200 rounded-lg p-5 sm:p-8 md:p-10 shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
+          <div className="max-w-4xl mx-auto bg-[#F5F7FA] border border-slate-200 rounded-lg p-5 sm:p-8 md:p-10 shadow-xs w-full">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center w-full">
               
               {/* Left 7 cols: Plan description */}
               <div className="md:col-span-7 space-y-4">
@@ -126,8 +126,8 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* 5. INCLUDED VS NO HIDDEN FEES COMPARISON */}
-      <section className="py-10 sm:py-16 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 sm:py-16 bg-white border-b border-slate-200 w-full max-w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           
           <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12 space-y-2">
             <span className="text-[11px] sm:text-xs font-semibold text-[#1677FF] uppercase tracking-wider">
@@ -141,7 +141,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto w-full">
             
             {/* Included */}
             <div className="bg-[#F5F7FA] border border-slate-200 rounded-lg p-5 sm:p-6 space-y-4">

@@ -38,14 +38,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0B1F33] border-b border-[#1E3A5F] shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20 gap-4 sm:gap-8">
+    <header className="sticky top-0 z-50 bg-[#0B1F33] border-b border-[#1E3A5F] shadow-sm w-full">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-8">
           
           {/* Zone 1: Single text element wordmark */}
           <button
             onClick={() => handleLinkClick('home')}
-            className="flex items-center gap-2 sm:gap-2.5 text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1677FF] rounded-md py-1"
+            className="flex items-center gap-2 sm:gap-2.5 text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1677FF] rounded-md py-1 shrink-0"
             aria-label="AIM Dispatching Home"
           >
             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded bg-[#1677FF] flex items-center justify-center shrink-0 shadow-sm transition-transform group-hover:scale-105">
@@ -63,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 <path d="M12 6v14" />
               </svg>
             </div>
-            <span className="text-lg sm:text-xl font-bold tracking-tight text-white whitespace-nowrap shrink-0">
+            <span className="text-base sm:text-xl font-bold tracking-tight text-white whitespace-nowrap">
               AIM <span className="text-[#1677FF]">DISPATCHING</span>
             </span>
           </button>
@@ -100,10 +100,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           </div>
 
           {/* Mobile Right Controls: Quick CTA + Hamburger */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden shrink-0">
             <button
               onClick={() => handleLinkClick('get-started')}
-              className="px-3 py-1.5 text-xs font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded transition-colors whitespace-nowrap"
+              className="px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded transition-colors whitespace-nowrap min-h-[38px] flex items-center"
             >
               Get Started
             </button>
@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-300 hover:text-white hover:bg-[#152B42] rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1677FF] min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="p-2 text-slate-300 hover:text-white hover:bg-[#152B42] rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1677FF] min-h-[44px] min-w-[44px] flex items-center justify-center shrink-0"
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >

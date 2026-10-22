@@ -62,16 +62,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Quick Trust Highlights */}
-              <div className="pt-4 sm:pt-6 border-t border-[#1E3A5F] grid grid-cols-3 gap-2 sm:gap-4 text-xs text-slate-300">
-                <div className="bg-[#12263F]/50 sm:bg-transparent p-2 sm:p-0 rounded text-center sm:text-left">
+              <div className="pt-4 sm:pt-6 border-t border-[#1E3A5F] grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 text-xs text-slate-300">
+                <div className="bg-[#12263F]/70 p-2.5 sm:p-0 rounded text-center sm:text-left border border-[#1E3A5F]/50 sm:border-0">
                   <div className="font-semibold text-white text-xs sm:text-sm">6% to 8%</div>
                   <div className="text-slate-400 text-[11px] sm:text-xs">Transparent Fee</div>
                 </div>
-                <div className="bg-[#12263F]/50 sm:bg-transparent p-2 sm:p-0 rounded text-center sm:text-left">
+                <div className="bg-[#12263F]/70 p-2.5 sm:p-0 rounded text-center sm:text-left border border-[#1E3A5F]/50 sm:border-0">
                   <div className="font-semibold text-white text-xs sm:text-sm">No Forced Dispatch</div>
                   <div className="text-slate-400 text-[11px] sm:text-xs">100% Driver Choice</div>
                 </div>
-                <div className="bg-[#12263F]/50 sm:bg-transparent p-2 sm:p-0 rounded text-center sm:text-left">
+                <div className="bg-[#12263F]/70 p-2.5 sm:p-0 rounded text-center sm:text-left border border-[#1E3A5F]/50 sm:border-0">
                   <div className="font-semibold text-white text-xs sm:text-sm">All Major Equipment</div>
                   <div className="text-slate-400 text-[11px] sm:text-xs">Van, Reefer, Flatbed+</div>
                 </div>

@@ -13,11 +13,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="bg-[#0B1F33] text-slate-300 border-t border-[#1E3A5F]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+    <footer className="bg-[#0B1F33] text-slate-300 border-t border-[#1E3A5F] w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full">
         
         {/* 4 Balanced, Elegant Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-[#1E3A5F]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 pb-10 border-b border-[#1E3A5F] w-full">
           
           {/* Column 1: Brand & Identity (Spans 4 columns) */}
           <div className="lg:col-span-4 space-y-4">

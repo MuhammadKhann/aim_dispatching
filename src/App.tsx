@@ -27,19 +27,19 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5F7FA] text-[#0B1F33]">
+    <div className="min-h-screen flex flex-col bg-[#F5F7FA] text-[#0B1F33] w-full max-w-full overflow-x-hidden">
       
       {/* Top Promotional Ribbon */}
-      <div className="bg-[#12263F] border-b border-[#1E3A5F] text-slate-300 text-[11px] sm:text-xs py-1.5 px-3 text-center">
+      <div className="bg-[#12263F] border-b border-[#1E3A5F] text-slate-300 text-[11px] sm:text-xs py-2 px-3 text-center w-full">
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
-          <span className="text-[#1677FF] font-semibold inline-flex items-center gap-1">
+          <span className="text-[#1677FF] font-semibold inline-flex items-center gap-1 shrink-0">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Introductory Offer:</span>
           </span>
-          <span className="truncate max-w-[210px] sm:max-w-none">Qualifying carriers start with 1–3 fee-free loads.</span>
+          <span className="text-slate-300">Qualifying carriers start with 1–3 fee-free loads.</span>
           <button
             onClick={() => handleNavigate('pricing')}
-            className="text-white hover:text-[#1677FF] font-semibold underline underline-offset-2 ml-0.5 inline-flex items-center gap-0.5 whitespace-nowrap"
+            className="text-white hover:text-[#1677FF] font-semibold underline underline-offset-2 ml-1 inline-flex items-center gap-0.5 whitespace-nowrap shrink-0 cursor-pointer"
           >
             <span>Details</span>
             <ArrowRight className="w-3 h-3" />
@@ -51,7 +51,7 @@ export default function App() {
       <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
 
       {/* Page Routing */}
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
         {currentPage === 'about' && <AboutPage onNavigate={handleNavigate} />}
         {currentPage === 'services' && <ServicesPage onNavigate={handleNavigate} />}

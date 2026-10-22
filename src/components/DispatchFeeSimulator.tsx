@@ -41,12 +41,12 @@ export const DispatchFeeSimulator: React.FC<DispatchFeeSimulatorProps> = ({ onNa
           </p>
         </div>
 
-        <div className="flex items-center gap-1 bg-[#F5F7FA] p-1 rounded-md border border-slate-200 self-start sm:self-auto">
+        <div className="flex items-center gap-1 bg-[#F5F7FA] p-1 rounded-md border border-slate-200 w-full sm:w-auto">
           {[6, 7, 8].map((rate) => (
             <button
               key={rate}
               onClick={() => setFeeRate(rate)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded transition-colors min-h-[38px] ${
+              className={`flex-1 sm:flex-initial px-3 py-1.5 text-xs font-semibold rounded transition-colors min-h-[38px] ${
                 feeRate === rate
                   ? 'bg-[#0B1F33] text-white shadow-xs'
                   : 'text-[#667085] hover:text-[#0B1F33]'
@@ -58,7 +58,7 @@ export const DispatchFeeSimulator: React.FC<DispatchFeeSimulatorProps> = ({ onNa
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 pt-6 w-full">
         
         {/* Controls - Left 7 cols */}
         <div className="lg:col-span-7 space-y-6">
@@ -68,7 +68,7 @@ export const DispatchFeeSimulator: React.FC<DispatchFeeSimulatorProps> = ({ onNa
             <label className="block text-xs font-semibold text-[#0B1F33] mb-2 uppercase tracking-wider">
               Select Equipment Type
             </label>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {trucks.map((truck) => (
                 <button
                   key={truck}
@@ -88,8 +88,8 @@ export const DispatchFeeSimulator: React.FC<DispatchFeeSimulatorProps> = ({ onNa
           {/* Gross slider */}
           <div className="space-y-3">
             <div className="flex justify-between items-center text-sm">
-              <span className="font-semibold text-[#0B1F33]">Estimated Weekly Gross Freight:</span>
-              <span className="font-mono font-bold text-lg text-[#1677FF] tabular-nums">
+              <span className="font-semibold text-[#0B1F33] text-xs sm:text-sm">Estimated Weekly Gross:</span>
+              <span className="font-mono font-bold text-base sm:text-lg text-[#1677FF] tabular-nums">
                 ${weeklyGross.toLocaleString()}
               </span>
             </div>
@@ -105,11 +105,11 @@ export const DispatchFeeSimulator: React.FC<DispatchFeeSimulatorProps> = ({ onNa
               aria-label="Weekly gross revenue range"
             />
             
-            <div className="flex justify-between text-[11px] text-[#667085] font-mono">
-              <span>$3,000 / wk</span>
-              <span>$7,500 / wk</span>
-              <span>$12,000 / wk</span>
-              <span>$16,000 / wk</span>
+            <div className="flex justify-between text-[10px] sm:text-[11px] text-[#667085] font-mono">
+              <span>$3k/wk</span>
+              <span>$7.5k/wk</span>
+              <span>$12k/wk</span>
+              <span>$16k/wk</span>
             </div>
           </div>
 
