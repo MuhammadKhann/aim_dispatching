@@ -88,6 +88,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   className="w-full h-[360px] sm:h-[420px] object-cover"
                   loading="eager"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const el = e.currentTarget;
+                    if (!el.src.includes('/images/hero_american_freight_truck')) {
+                      el.src = '/images/hero_american_freight_truck_1792698292717.jpg';
+                    }
+                  }}
                 />
                 
                 {/* Overlay card for real context */}
@@ -242,6 +248,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   className="w-full h-[320px] sm:h-[380px] object-cover"
                   loading="lazy"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const el = e.currentTarget;
+                    if (!el.src.includes('/images/dispatch_operations_coordination')) {
+                      el.src = '/images/dispatch_operations_coordination_1792698293965.jpg';
+                    }
+                  }}
                 />
               </div>
               <div className="p-4 bg-white border border-slate-200 rounded-md text-xs text-[#667085] flex items-center justify-between">

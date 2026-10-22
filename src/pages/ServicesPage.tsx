@@ -202,6 +202,12 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                   className="w-full h-[320px] sm:h-[380px] object-cover"
                   loading="lazy"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const el = e.currentTarget;
+                    if (!el.src.includes('/images/flatbed_cargo_transport')) {
+                      el.src = '/images/flatbed_cargo_transport_1792698293661.jpg';
+                    }
+                  }}
                 />
               </div>
             </div>

@@ -85,6 +85,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                   className="w-full h-[360px] sm:h-[420px] object-cover"
                   loading="lazy"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const el = e.currentTarget;
+                    if (!el.src.includes('/images/freight_logistics_yard')) {
+                      el.src = '/images/freight_logistics_yard_1792698292922.jpg';
+                    }
+                  }}
                 />
               </div>
               <div className="flex items-center justify-between text-xs text-[#667085] px-1">
