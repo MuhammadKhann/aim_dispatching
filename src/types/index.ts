@@ -34,22 +34,17 @@ export interface FaqItem {
   answer: string;
 }
 
-export type EquipmentOption = 
-  | 'Dry Van (53ft)'
-  | 'Reefer (Refrigerated)'
-  | 'Flatbed'
-  | 'Step Deck'
-  | 'Box Truck (24-26ft)'
-  | 'Power Only'
-  | 'Hotshot / Gooseneck'
-  | 'Other / Multiple Units';
+export type EquipmentOption = string;
 
 export type ContactMethodOption = 'Phone Call' | 'Text / SMS' | 'Email';
 
 export interface DispatchInquiryForm {
   fullName: string;
+  carrierRole: string;
   contactValue: string; // Phone number or email
-  equipmentType: EquipmentOption;
+  contactTiming: string;
+  equipmentType: string;
+  preferredLanes: string;
   message: string;
   preferredMethod: ContactMethodOption;
 }

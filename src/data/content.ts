@@ -118,16 +118,71 @@ export const ABOUT_COPY = {
     'Founded by Muhammad, AIM Dispatching was established to deliver genuine, carrier-first dispatch support for owner-operators and small fleets across the United States. Rather than acting as freight brokers who prioritize cheap rates for shippers, we act as dedicated back-office partners who work solely for the carrier. Our approach is grounded in direct communication, realistic market rates, and complete respect for the driver.'
 };
 
-export const EQUIPMENT_OPTIONS: EquipmentOption[] = [
-  'Dry Van (53ft)',
-  'Reefer (Refrigerated)',
-  'Flatbed',
-  'Step Deck',
-  'Box Truck (24-26ft)',
-  'Power Only',
-  'Hotshot / Gooseneck',
-  'Other / Multiple Units'
+export const CARRIER_ROLE_OPTIONS = [
+  'Owner-Operator (Single Truck)',
+  'Small Fleet (2–5 Trucks)',
+  'Fleet Manager (6–15 Trucks)',
+  'Independent CDL Driver',
+  'New MC Authority / Recently Formed'
+] as const;
+
+export const CONTACT_TIMING_OPTIONS = [
+  'Anytime (Fastest Response)',
+  'Morning (7:00 AM – 12:00 PM EST)',
+  'Afternoon (12:00 PM – 5:00 PM EST)',
+  'Evening (5:00 PM – 8:00 PM EST)'
+] as const;
+
+export const EQUIPMENT_OPTIONS: string[] = [
+  'Dry Van (53ft Enclosed)',
+  'Reefer (53ft Temperature-Controlled)',
+  'Flatbed (48ft / 53ft Open Deck)',
+  'Step Deck / Single Drop',
+  'Box Truck (26ft with Liftgate)',
+  'Box Truck (24ft)',
+  'Power Only (Tractor Relays & Drop)',
+  'Hotshot (40ft Gooseneck)',
+  'Hotshot (30ft–35ft)',
+  'Sprinter / Cargo Van',
+  'Other / Mixed Fleet'
 ];
+
+export const RUNNING_LANES_OPTIONS = [
+  'Nationwide (All 48 Lower States)',
+  'Midwest Regional (IL, IN, OH, MI, WI, MO)',
+  'Southeast Regional (FL, GA, NC, SC, TN, AL)',
+  'Northeast / Mid-Atlantic (PA, NY, NJ, MD, VA)',
+  'South / Texas Regional (TX, OK, LA, AR)',
+  'West Coast / Pacific (CA, OR, WA, AZ, NV)',
+  'Dedicated Corridors / Local Loop'
+] as const;
+
+export const MESSAGE_PRESETS = [
+  {
+    label: '-- Select a quick message template or type below --',
+    text: ''
+  },
+  {
+    label: 'Claim First Free Load (Limited-Time 3-Day Offer)',
+    text: 'Hello AIM Dispatching, I would like to claim the limited-time 3-day offer for 100% free dispatch on my first load. Please contact me with available freight and onboarding steps.'
+  },
+  {
+    label: 'Looking for consistent weekly freight matching preferred lanes',
+    text: 'Hello Muhammad, I am seeking a reliable dispatch partner to keep my truck rolling consistently each week. My priority is minimizing deadhead and maximizing net revenue per mile.'
+  },
+  {
+    label: 'Need full dispatch (booking, rate negotiation, broker packets & billing)',
+    text: 'I need full back-office dispatch support to handle load search, aggressive broker rate negotiations, carrier packet completion, and invoicing paperwork.'
+  },
+  {
+    label: 'Inquiry regarding 6%–8% dispatch fee and carrier terms',
+    text: 'I would like more information regarding your 6% to 8% dispatch fee structure, payment schedule, and carrier agreement terms.'
+  },
+  {
+    label: 'Immediate dispatch needed for an empty truck currently parked',
+    text: 'My truck is currently empty and ready to roll. Please reach out with available spot loads and lane options as soon as possible.'
+  }
+] as const;
 
 export const FAQS: FaqItem[] = [
   {

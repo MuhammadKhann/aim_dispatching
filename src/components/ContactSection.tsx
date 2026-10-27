@@ -8,26 +8,48 @@ import {
   Check, 
   ExternalLink, 
   Clock, 
-  ShieldCheck, 
   CheckCircle2,
-  MessageSquare
+  MessageSquare,
+  FileText
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data/contact';
-import { EQUIPMENT_OPTIONS } from '../data/content';
-import { DispatchInquiryForm, EquipmentOption, ContactMethodOption } from '../types';
+import { 
+  EQUIPMENT_OPTIONS, 
+  CARRIER_ROLE_OPTIONS, 
+  CONTACT_TIMING_OPTIONS, 
+  RUNNING_LANES_OPTIONS, 
+  MESSAGE_PRESETS 
+} from '../data/content';
+import { DispatchInquiryForm, ContactMethodOption } from '../types';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState<DispatchInquiryForm>({
     fullName: '',
+    carrierRole: 'Owner-Operator (Single Truck)',
     contactValue: '',
-    equipmentType: 'Dry Van (53ft)',
+    contactTiming: 'Anytime (Fastest Response)',
+    equipmentType: 'Dry Van (53ft Enclosed)',
+    preferredLanes: 'Nationwide (All 48 Lower States)',
     message: '',
     preferredMethod: 'Phone Call'
   });
 
+  const [selectedPreset, setSelectedPreset] = useState<string>('');
   const [errors, setErrors] = useState<Partial<Record<keyof DispatchInquiryForm, string>>>({});
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  const handlePresetChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const val = e.target.value;
+    setSelectedPreset(val);
+    const found = MESSAGE_PRESETS.find(p => p.label === val);
+    if (found && found.text) {
+      setFormData(prev => ({ ...prev, message: found.text }));
+      if (errors.message) {
+        setErrors(prev => ({ ...prev, message: undefined }));
+      }
+    }
+  };
 
   const validate = (): boolean => {
     const newErrors: Partial<Record<keyof DispatchInquiryForm, string>> = {};
@@ -39,7 +61,6 @@ export const ContactSection: React.FC = () => {
     if (!formData.contactValue.trim()) {
       newErrors.contactValue = 'Phone number or email is required.';
     } else {
-      // Basic check for either email or valid phone string
       const val = formData.contactValue.trim();
       const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
       const isPhone = /^[\d\s()+-]{7,20}$/.test(val);
@@ -49,7 +70,7 @@ export const ContactSection: React.FC = () => {
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Please provide details about your equipment, preferred lanes, or requirements.';
+      newErrors.message = 'Please provide details or select a quick template above.';
     }
 
     setErrors(newErrors);
@@ -57,17 +78,20 @@ export const ContactSection: React.FC = () => {
   };
 
   const getFormattedMessage = () => {
-    return `AIM Dispatching Inquiry:
------------------------------
+    return `AIM Dispatching Carrier Inquiry:
+------------------------------------------
 Carrier / Name: ${formData.fullName.trim()}
-Contact: ${formData.contactValue.trim()}
+Operation Type: ${formData.carrierRole}
+Contact Info: ${formData.contactValue.trim()}
+Preferred Time: ${formData.contactTiming}
 Preferred Contact Method: ${formData.preferredMethod}
 Equipment Type: ${formData.equipmentType}
+Preferred Running Lanes: ${formData.preferredLanes}
 
-Message / Notes:
+Dispatch Notes / Requirements:
 ${formData.message.trim()}
------------------------------
-Inquiry sent via https://aimdispatching.vercel.app/`;
+------------------------------------------
+Submitted via https://aimdispatching.vercel.app/`;
   };
 
   const handleCopy = () => {
@@ -78,7 +102,7 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
 
   const handleOpenEmailComposer = () => {
     if (!validate()) return;
-    const subject = encodeURIComponent(`Dispatch Inquiry: ${formData.fullName.trim()} - ${formData.equipmentType}`);
+    const subject = encodeURIComponent(`Dispatch Inquiry: ${formData.fullName.trim()} [${formData.equipmentType}]`);
     const body = encodeURIComponent(getFormattedMessage());
     window.location.href = `mailto:${CONTACT_INFO.email}?subject=${subject}&body=${body}`;
     setSubmitted(true);
@@ -103,7 +127,7 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
             Contact AIM Dispatching
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mt-2 sm:mt-3 leading-relaxed">
-            Reach out directly to discuss your equipment, preferred lanes, or dispatching terms. We respond quickly so you can keep moving.
+            Reach out directly to discuss your equipment, preferred lanes, or dispatching terms. Select options from each field to speed up your inquiry.
           </p>
         </div>
 
@@ -204,7 +228,7 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
 
           </div>
 
-          {/* Right 7 Cols: Dispatch Inquiry Form */}
+          {/* Right 7 Cols: Dispatch Inquiry Form With General Dropdowns In Each Field */}
           <div className="lg:col-span-7">
             <div className="bg-white p-6 sm:p-8 rounded-lg border border-slate-200 shadow-xs">
               
@@ -213,7 +237,7 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
                   Send a Dispatch Inquiry
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600">
-                  Fill in your details below. You can automatically open a pre-filled email or copy your inquiry to clipboard with one click.
+                  Select your options below. Pre-filled templates allow you to submit your inquiry in seconds.
                 </p>
               </div>
 
@@ -226,7 +250,7 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
                     Inquiry Generated Successfully
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                    Your pre-filled inquiry was opened in your email client. If your client did not launch, you can copy the full inquiry details below and text them to{' '}
+                    Your pre-filled inquiry was opened in your email client. If your client did not launch, you can copy the full inquiry details below and text them directly to{' '}
                     <span className="font-semibold text-[#0B1B2B]">{CONTACT_INFO.phone}</span>.
                   </p>
                   
@@ -250,68 +274,125 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                   
-                  {/* Field 1: Full Name */}
-                  <div>
-                    <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
-                      Full Name / Carrier Contact <span className="text-orange-600">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      placeholder="e.g. John Miller"
-                      className={`w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px] ${
-                        errors.fullName ? 'border-red-500' : 'border-slate-300'
-                      }`}
-                    />
-                    {errors.fullName && (
-                      <p className="text-xs text-red-600 mt-1">{errors.fullName}</p>
-                    )}
+                  {/* Field 1: Full Name + Carrier Role Dropdown */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
+                        Full Name / Contact Person <span className="text-orange-600">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        placeholder="e.g. John Miller"
+                        className={`w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px] ${
+                          errors.fullName ? 'border-red-500' : 'border-slate-300'
+                        }`}
+                      />
+                      {errors.fullName && (
+                        <p className="text-xs text-red-600 mt-1">{errors.fullName}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
+                        Carrier Operation Type
+                      </label>
+                      <select
+                        value={formData.carrierRole}
+                        onChange={(e) => setFormData({ ...formData, carrierRole: e.target.value })}
+                        className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px]"
+                      >
+                        {CARRIER_ROLE_OPTIONS.map((role) => (
+                          <option key={role} value={role}>
+                            {role}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
-                  {/* Field 2: Phone number or email */}
-                  <div>
-                    <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
-                      Phone Number or Email <span className="text-orange-600">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.contactValue}
-                      onChange={(e) => setFormData({ ...formData, contactValue: e.target.value })}
-                      placeholder="e.g. (813) 555-0199 or driver@example.com"
-                      className={`w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px] ${
-                        errors.contactValue ? 'border-red-500' : 'border-slate-300'
-                      }`}
-                    />
-                    {errors.contactValue && (
-                      <p className="text-xs text-red-600 mt-1">{errors.contactValue}</p>
-                    )}
+                  {/* Field 2: Contact Info + Best Timing Dropdown */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
+                        Phone Number or Email <span className="text-orange-600">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.contactValue}
+                        onChange={(e) => setFormData({ ...formData, contactValue: e.target.value })}
+                        placeholder="e.g. (813) 555-0199 or driver@example.com"
+                        className={`w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px] ${
+                          errors.contactValue ? 'border-red-500' : 'border-slate-300'
+                        }`}
+                      />
+                      {errors.contactValue && (
+                        <p className="text-xs text-red-600 mt-1">{errors.contactValue}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
+                        Best Time to Contact
+                      </label>
+                      <select
+                        value={formData.contactTiming}
+                        onChange={(e) => setFormData({ ...formData, contactTiming: e.target.value })}
+                        className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px]"
+                      >
+                        {CONTACT_TIMING_OPTIONS.map((timing) => (
+                          <option key={timing} value={timing}>
+                            {timing}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
-                  {/* Field 3: Equipment Type */}
-                  <div>
-                    <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
-                      Equipment Type <span className="text-orange-600">*</span>
-                    </label>
-                    <select
-                      value={formData.equipmentType}
-                      onChange={(e) => setFormData({ ...formData, equipmentType: e.target.value as EquipmentOption })}
-                      className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px]"
-                    >
-                      {EQUIPMENT_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt}>
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
+                  {/* Field 3: Equipment Type Dropdown + Preferred Running Lanes Dropdown */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
+                        Equipment Type <span className="text-orange-600">*</span>
+                      </label>
+                      <select
+                        value={formData.equipmentType}
+                        onChange={(e) => setFormData({ ...formData, equipmentType: e.target.value })}
+                        className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px]"
+                      >
+                        {EQUIPMENT_OPTIONS.map((opt) => (
+                          <option key={opt} value={opt}>
+                            {opt}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
+                        Preferred Running Lanes / Region
+                      </label>
+                      <select
+                        value={formData.preferredLanes}
+                        onChange={(e) => setFormData({ ...formData, preferredLanes: e.target.value })}
+                        className="w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] min-h-[44px]"
+                      >
+                        {RUNNING_LANES_OPTIONS.map((lane) => (
+                          <option key={lane} value={lane}>
+                            {lane}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
                   {/* Field 4: Preferred Contact Method */}
                   <div>
                     <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
-                      Preferred Contact Method
+                      Preferred Communication Channel
                     </label>
                     <div className="grid grid-cols-3 gap-2">
                       {(['Phone Call', 'Text / SMS', 'Email'] as ContactMethodOption[]).map((method) => {
@@ -323,7 +404,7 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
                             onClick={() => setFormData({ ...formData, preferredMethod: method })}
                             className={`px-3 py-2 text-xs font-medium rounded-md border transition-colors cursor-pointer text-center min-h-[40px] flex items-center justify-center ${
                               isSelected
-                                ? 'bg-[#0B1B2B] text-white border-[#0B1B2B]'
+                                ? 'bg-[#0B1B2B] text-white border-[#0B1B2B] shadow-xs'
                                 : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                             }`}
                           >
@@ -334,17 +415,39 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
                     </div>
                   </div>
 
-                  {/* Field 5: Message */}
+                  {/* Field 5: Message & Quick Inquiry Topic Dropdown */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#0B1B2B] mb-1.5">
-                      Message / Dispatch Requirements <span className="text-orange-600">*</span>
-                    </label>
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <label className="block text-xs font-semibold text-[#0B1B2B]">
+                        Message / Dispatch Requirements <span className="text-orange-600">*</span>
+                      </label>
+                      <span className="text-[11px] text-orange-600 font-medium inline-flex items-center gap-1">
+                        <FileText className="w-3 h-3" />
+                        <span>Autofill with template below</span>
+                      </span>
+                    </div>
+
+                    {/* Quick Preset Dropdown */}
+                    <div className="mb-2">
+                      <select
+                        value={selectedPreset}
+                        onChange={handlePresetChange}
+                        className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-md text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+                      >
+                        {MESSAGE_PRESETS.map((preset) => (
+                          <option key={preset.label} value={preset.label}>
+                            {preset.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
                     <textarea
                       required
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Tell us about your home base, preferred lanes (e.g. Midwest to Southeast), target gross, or when you are ready to start..."
+                      placeholder="Type your message, preferred lanes, equipment specifications, or select a template above..."
                       className={`w-full px-3.5 py-3 sm:py-2.5 text-base sm:text-sm bg-white border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500/20 text-[#0B1B2B] ${
                         errors.message ? 'border-red-500' : 'border-slate-300'
                       }`}
@@ -376,7 +479,7 @@ Inquiry sent via https://aimdispatching.vercel.app/`;
                   </div>
 
                   <p className="text-[11px] text-slate-500 pt-1 leading-snug">
-                    Your inquiry directly opens your device mail client addressed to <span className="font-semibold text-slate-700">{CONTACT_INFO.email}</span> with your equipment and notes ready to send.
+                    Your selections format into a clean dispatch summary addressed to <span className="font-semibold text-slate-700">{CONTACT_INFO.email}</span>.
                   </p>
 
                 </form>
