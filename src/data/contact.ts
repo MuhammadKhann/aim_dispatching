@@ -1,4 +1,7 @@
 export const CONTACT_INFO = {
+  name: 'AIM Dispatching',
+  founder: 'Muhammad',
+  industry: 'Truck Dispatching & Logistics Support',
   website: 'https://aimdispatching.vercel.app/',
   websiteDisplay: 'aimdispatching.vercel.app',
   phone: '(813) 355-9099',
@@ -9,5 +12,7 @@ export const CONTACT_INFO = {
   emailMailto: 'mailto:aim.dispatcher.us@gmail.com',
   callOrTextLabel: 'Call or Text: (813) 355-9099',
   hours: 'Monday – Friday: 7:00 AM – 7:00 PM EST',
-  support: '24/7 Dispatch Operations & Driver Support'
+  support: '24/7 Active Dispatch & Driver Support',
+  dispatchFeeRange: '6% to 8%',
+  introOffer: 'Qualifying new carriers receive their first 1–3 loads with zero dispatch fees upon agreement.'
 } as const;

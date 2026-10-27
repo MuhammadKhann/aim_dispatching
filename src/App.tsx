@@ -1,68 +1,112 @@
 import React, { useState, useEffect } from 'react';
-import { PageId } from './types';
 import { Navbar } from './components/Navbar';
+import { HeroSection } from './components/HeroSection';
+import { ServicesSection } from './components/ServicesSection';
+import { WhyChooseSection } from './components/WhyChooseSection';
+import { HowItWorksSection } from './components/HowItWorksSection';
+import { AboutSection } from './components/AboutSection';
+import { FaqSection } from './components/FaqSection';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { PricingPage } from './pages/PricingPage';
-import { FaqPage } from './pages/FaqPage';
-import { ContactPage } from './pages/ContactPage';
-import { GetStartedPage } from './pages/GetStartedPage';
+import { MobileQuickBar } from './components/MobileQuickBar';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
+import { CONTACT_INFO } from './data/contact';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+  const [activeSection, setActiveSection] = useState('hero');
 
-  // Clean initial hash if any exists to keep URL clean and static
+  // Ensure clean URL without hash anchors on load or reload
   useEffect(() => {
     if (window.location.hash) {
       window.history.replaceState(null, '', window.location.pathname + window.location.search);
     }
   }, []);
 
-  const handleNavigate = (page: PageId) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Track active section for clean navbar highlighting
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['hero', 'services', 'why-choose', 'how-it-works', 'about', 'faq', 'contact'];
+      const scrollPosition = window.scrollY + 200;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Smooth scroll handler that preserves the static URL
+  const scrollToSection = (sectionId: string) => {
+    const targetEl = document.getElementById(sectionId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5F7FA] text-[#0B1F33] w-full max-w-full overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0B1B2B] w-full max-w-full overflow-x-hidden pb-12 lg:pb-0">
       
-      {/* Top Promotional Ribbon */}
-      <div className="bg-[#12263F] border-b border-[#1E3A5F] text-slate-300 text-[11px] sm:text-xs py-2 px-3 text-center w-full">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
-          <span className="text-[#1677FF] font-semibold inline-flex items-center gap-1 shrink-0">
+      {/* Top Introductory Ribbon */}
+      <div className="bg-[#081420] border-b border-[#162E4A] text-slate-300 text-[11px] sm:text-xs py-2 px-3 text-center w-full">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+          <span className="text-orange-500 font-semibold inline-flex items-center gap-1 shrink-0">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Introductory Offer:</span>
           </span>
-          <span className="text-slate-300">Qualifying carriers start with 1–3 fee-free loads.</span>
+          <span className="text-slate-300">
+            Qualifying new carriers receive their first 1–3 loads with zero dispatch fees.
+          </span>
           <button
-            onClick={() => handleNavigate('pricing')}
-            className="text-white hover:text-[#1677FF] font-semibold underline underline-offset-2 ml-1 inline-flex items-center gap-0.5 whitespace-nowrap shrink-0 cursor-pointer"
+            onClick={() => scrollToSection('contact')}
+            className="text-white hover:text-orange-400 font-semibold underline underline-offset-2 ml-1 inline-flex items-center gap-0.5 whitespace-nowrap shrink-0 cursor-pointer"
           >
-            <span>Details</span>
+            <span>Inquire Now</span>
             <ArrowRight className="w-3 h-3" />
           </button>
         </div>
       </div>
 
-      {/* Main Sticky Navbar adhering to Top Bar Contract */}
-      <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
+      {/* Main Sticky Top Navigation Bar */}
+      <Navbar onScrollTo={scrollToSection} activeSection={activeSection} />
 
-      {/* Page Routing */}
+      {/* Main Single-Page Sections Flow */}
       <main className="flex-1 w-full max-w-full overflow-x-hidden">
-        {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
-        {currentPage === 'about' && <AboutPage onNavigate={handleNavigate} />}
-        {currentPage === 'services' && <ServicesPage onNavigate={handleNavigate} />}
-        {currentPage === 'pricing' && <PricingPage onNavigate={handleNavigate} />}
-        {currentPage === 'faq' && <FaqPage onNavigate={handleNavigate} />}
-        {currentPage === 'contact' && <ContactPage onNavigate={handleNavigate} />}
-        {currentPage === 'get-started' && <GetStartedPage onNavigate={handleNavigate} />}
+        
+        {/* 1. Hero Section */}
+        <HeroSection onGetStarted={() => scrollToSection('contact')} />
+
+        {/* 2. Services Section (4 Core Services) */}
+        <ServicesSection onSelectService={() => scrollToSection('contact')} />
+
+        {/* 3. Why Choose AIM Dispatching Section (5 Practical Benefits) */}
+        <WhyChooseSection />
+
+        {/* 4. How It Works Section (3-Step Timeline) */}
+        <HowItWorksSection onGetStarted={() => scrollToSection('contact')} />
+
+        {/* 5. About Muhammad & AIM Dispatching Section */}
+        <AboutSection onContactClick={() => scrollToSection('contact')} />
+
+        {/* 6. FAQ Accordion Section */}
+        <FaqSection />
+
+        {/* 7. Contact Section & Pre-Filled Dispatch Inquiry Form */}
+        <ContactSection />
+
       </main>
 
-      {/* Corporate Logistics Footer */}
-      <Footer onNavigate={handleNavigate} />
+      {/* Clean 4-Column Logistics Footer */}
+      <Footer onScrollTo={scrollToSection} />
+
+      {/* Sticky Mobile Quick Action Bar (Under 15% sticky cap) */}
+      <MobileQuickBar onGetStarted={() => scrollToSection('contact')} />
+
     </div>
   );
 }
