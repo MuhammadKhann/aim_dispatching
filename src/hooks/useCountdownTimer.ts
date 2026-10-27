@@ -1,7 +1,17 @@
 import { useState, useEffect } from 'react';
 
-const STORAGE_KEY = 'aim_dispatch_offer_expiry_v1';
-const THREE_DAYS_MS = 3 * 24 * 60 * 60 * 1000;
+const STORAGE_KEY = 'aim_dispatch_offer_expiry_random_v2';
+
+// Helper to generate a realistic random remaining duration within the 3-day offer window
+// (between ~26 hours to ~68 hours, e.g. "1d 19h 42m 17s" or "2d 14h 28m 53s")
+function getRandomDurationMs(): number {
+  // Random hours between 26 and 68 hours (approx 1.1 to 2.8 days remaining)
+  const randomHours = Math.floor(Math.random() * (68 - 26 + 1)) + 26;
+  const randomMinutes = Math.floor(Math.random() * 60);
+  const randomSeconds = Math.floor(Math.random() * 60);
+  
+  return (randomHours * 3600 + randomMinutes * 60 + randomSeconds) * 1000;
+}
 
 export interface CountdownTime {
   days: number;
@@ -18,16 +28,17 @@ export function useCountdownTimer(): CountdownTime {
       if (stored) {
         const target = parseInt(stored, 10);
         const remaining = target - Date.now();
-        if (remaining > 0) {
+        if (remaining > 5000) {
           return remaining;
         }
       }
-      // If none or expired, set a fresh 3 days anchor
-      const newTarget = Date.now() + THREE_DAYS_MS;
+      // Generate a non-zero random offset within the 3-day promotion window
+      const randomDuration = getRandomDurationMs();
+      const newTarget = Date.now() + randomDuration;
       localStorage.setItem(STORAGE_KEY, newTarget.toString());
-      return THREE_DAYS_MS;
+      return randomDuration;
     } catch {
-      return THREE_DAYS_MS;
+      return getRandomDurationMs();
     }
   });
 
@@ -38,8 +49,9 @@ export function useCountdownTimer(): CountdownTime {
         let target = stored ? parseInt(stored, 10) : 0;
         
         if (!target || target <= Date.now()) {
-          // Reset to 3 days if expired so the promotional demo stays active
-          target = Date.now() + THREE_DAYS_MS;
+          // If expired, generate a new random duration within the 3-day window
+          const randomDuration = getRandomDurationMs();
+          target = Date.now() + randomDuration;
           localStorage.setItem(STORAGE_KEY, target.toString());
         }
 
