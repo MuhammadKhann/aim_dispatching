@@ -14,5 +14,5 @@ export const CONTACT_INFO = {
   hours: 'Monday – Friday: 7:00 AM – 7:00 PM EST',
   support: '24/7 Active Dispatch & Driver Support',
   dispatchFeeRange: '6% to 8%',
-  introOffer: 'Qualifying new carriers receive their first 1–3 loads with zero dispatch fees upon agreement.'
+  introOffer: 'Limited-Time 3-Day Offer: Your first load is 100% free with zero dispatch fees.'
 } as const;

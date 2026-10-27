@@ -176,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
               &copy; 2026 AIM Dispatching. All rights reserved. Commercial freight logistics & driver representation.
             </p>
             <p className="text-[11px] text-slate-500">
-              Standard dispatch fee 6%–8%. 1–3 introductory fee-free loads offer available for qualifying carriers upon mutual agreement.
+              Standard dispatch fee 6%–8%. Limited-time 3-day offer: first load 100% free with zero dispatch fees for qualifying new carriers.
             </p>
           </div>
 
@@ -234,7 +234,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollTo }) => {
                     AIM Dispatching operates strictly as a carrier dispatch service provider. We act under the direction and authorization of the carrier to locate freight, negotiate rates, and coordinate dispatch communications.
                   </p>
                   <p>
-                    We maintain a strict zero-forced-dispatch policy. Carriers maintain 100% authority to accept or reject any load. Standard dispatch compensation is 6% to 8% per load. Introductory free load promotions (1–3 loads) apply to eligible new carriers subject to written mutual agreement before booking begins.
+                    We maintain a strict zero-forced-dispatch policy. Carriers maintain 100% authority to accept or reject any load. Standard dispatch compensation is 6% to 8% per load. Limited-time 3-day promotion: your first load is 100% free with zero dispatch fees upon agreement.
                   </p>
                   <p>
                     For inquiries, please reach out via phone at <span className="text-white font-medium">{CONTACT_INFO.phone}</span> or email <span className="text-white font-medium">{CONTACT_INFO.email}</span>.

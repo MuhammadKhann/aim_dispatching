@@ -134,7 +134,7 @@ export const FAQS: FaqItem[] = [
     id: 'fee-structure',
     question: 'What are your dispatching fees?',
     answer:
-      'Our standard dispatch fee is typically 6% to 8% per load depending on your equipment type and agreed dispatch arrangement. There are no hidden administrative charges, signup fees, or long-term restrictive contracts. Qualifying new carriers can also take advantage of our introductory offer of 1 to 3 fee-free loads upon agreement.'
+      'Our standard dispatch fee is typically 6% to 8% per load depending on your equipment type and agreed dispatch arrangement. There are no hidden administrative charges, signup fees, or long-term restrictive contracts. Qualifying new carriers can also take advantage of our limited-time 3-day offer: your first load is 100% free with zero dispatch fees upon agreement.'
   },
   {
     id: 'forced-dispatch',

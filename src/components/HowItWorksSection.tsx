@@ -92,7 +92,7 @@ export const HowItWorksSection: React.FC<HowItWorksSectionProps> = ({ onGetStart
               Ready to discuss loads for your truck?
             </h4>
             <p className="text-xs sm:text-sm text-slate-300">
-              Qualifying new carriers can receive their first 1–3 loads with zero dispatch fees.
+              Qualifying new carriers can receive their first load 100% fee-free during our limited-time 3-day promotion.
             </p>
           </div>
           <button

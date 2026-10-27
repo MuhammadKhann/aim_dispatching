@@ -105,8 +105,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-white block">1–3 Free Loads Offer</span>
-                  <span className="text-slate-400">For qualifying new carriers</span>
+                  <span className="font-semibold text-white block">First Load 100% Free</span>
+                  <span className="text-slate-400">3-Day Limited Offer</span>
                 </div>
               </div>
             </div>

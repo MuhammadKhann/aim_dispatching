@@ -20,15 +20,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
             <div className="rounded-lg overflow-hidden border border-slate-200 shadow-md bg-[#0F243A]">
               <img
                 src={ASSETS.dispatchOffice}
-                alt="Freight dispatch desk with operational load management and lane maps"
+                alt="Professional freight dispatcher coordinating loads at dispatch workstation"
                 className="w-full h-[280px] sm:h-[380px] lg:h-[440px] object-cover"
                 loading="lazy"
                 decoding="async"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   const el = e.currentTarget;
-                  if (!el.src.includes('/images/dispatch_operations_coordination')) {
-                    el.src = '/images/dispatch_operations_coordination_1792698293965.jpg';
+                  if (!el.src.includes('/images/male_freight_dispatcher')) {
+                    el.src = '/images/male_freight_dispatcher_1793134563732.jpg';
                   }
                 }}
               />
