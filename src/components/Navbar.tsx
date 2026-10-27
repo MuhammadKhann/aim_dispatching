@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
-import { Menu, X, ArrowRight, PhoneCall } from 'lucide-react';
+import { Menu, X, ArrowRight, PhoneCall, Mail, MessageSquare, Phone } from 'lucide-react';
+import { CONTACT_INFO } from '../data/contact';
 
 interface NavbarProps {
   currentPage: PageId;
@@ -88,19 +89,37 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             })}
           </nav>
 
-          {/* Zone 3: Desktop CTA */}
-          <div className="hidden lg:flex items-center shrink-0">
+          {/* Zone 3: Desktop Direct Contact + CTA */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <a
+              href={CONTACT_INFO.phoneTel}
+              className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:text-white bg-[#152B42] hover:bg-[#1E3A5F] rounded-md border border-[#1E3A5F] transition-colors whitespace-nowrap"
+              title="Call or Text AIM Dispatching"
+            >
+              <PhoneCall className="w-3.5 h-3.5 text-[#1677FF]" />
+              <span>Call / Text: {CONTACT_INFO.phone}</span>
+            </a>
+
             <button
               onClick={() => handleLinkClick('get-started')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded-md transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded-md transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white whitespace-nowrap shrink-0"
             >
               <span>Get Started</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Mobile Right Controls: Quick CTA + Hamburger */}
+          {/* Mobile Right Controls: Quick Phone + CTA + Hamburger */}
           <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden shrink-0">
+            <a
+              href={CONTACT_INFO.phoneTel}
+              aria-label="Call AIM Dispatching"
+              className="p-2 text-white bg-[#152B42] hover:bg-[#1E3A5F] rounded border border-[#1E3A5F] min-h-[38px] min-w-[38px] flex items-center justify-center shrink-0"
+              title="Call (813) 355-9099"
+            >
+              <Phone className="w-4 h-4 text-[#1677FF]" />
+            </a>
+
             <button
               onClick={() => handleLinkClick('get-started')}
               className="px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded transition-colors whitespace-nowrap min-h-[38px] flex items-center"
@@ -125,29 +144,72 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       {/* Mobile Drawer with Backdrop */}
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-16 bottom-0 z-50 flex flex-col bg-[#0B1F33]/98 backdrop-blur-md border-t border-[#1E3A5F] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="px-5 py-6 space-y-2 flex-1">
-            <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 mb-2">
+          <div className="px-5 py-6 space-y-3 flex-1">
+            <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-1">
               Website Navigation
             </div>
-            {navLinks.map((link) => {
-              const isActive = currentPage === link.id;
-              return (
-                <button
-                  key={link.id}
-                  onClick={() => handleLinkClick(link.id)}
-                  className={`w-full text-left px-4 py-3 text-base font-medium rounded-md transition-colors flex items-center justify-between min-h-[48px] ${
-                    isActive
-                      ? 'bg-[#152B42] text-white font-semibold border-l-4 border-[#1677FF]'
-                      : 'text-slate-300 hover:bg-[#152B42]/70 hover:text-white'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  <ArrowRight className="w-4 h-4 text-slate-500" />
-                </button>
-              );
-            })}
+            <div className="space-y-1.5">
+              {navLinks.map((link) => {
+                const isActive = currentPage === link.id;
+                return (
+                  <button
+                    key={link.id}
+                    onClick={() => handleLinkClick(link.id)}
+                    className={`w-full text-left px-4 py-3 text-base font-medium rounded-md transition-colors flex items-center justify-between min-h-[48px] ${
+                      isActive
+                        ? 'bg-[#152B42] text-white font-semibold border-l-4 border-[#1677FF]'
+                        : 'text-slate-300 hover:bg-[#152B42]/70 hover:text-white'
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    <ArrowRight className="w-4 h-4 text-slate-500" />
+                  </button>
+                );
+              })}
+            </div>
 
-            <div className="pt-6 mt-4 border-t border-[#1E3A5F] space-y-3">
+            {/* Official Contact Direct Actions in Mobile Menu */}
+            <div className="pt-4 border-t border-[#1E3A5F] space-y-2.5">
+              <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-1">
+                Official Direct Contact
+              </div>
+
+              <div className="p-3.5 bg-[#12263F] border border-[#1E3A5F] rounded-lg space-y-3">
+                <div>
+                  <div className="text-xs text-slate-400">Direct Dispatch Line:</div>
+                  <div className="text-sm font-bold text-white tracking-wide">{CONTACT_INFO.phone}</div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href={CONTACT_INFO.phoneTel}
+                    className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded transition-colors text-center"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>Call Now</span>
+                  </a>
+                  <a
+                    href={CONTACT_INFO.phoneSms}
+                    className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-200 bg-[#152B42] hover:bg-[#1E3A5F] border border-[#1E3A5F] rounded transition-colors text-center"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5 text-[#1677FF]" />
+                    <span>Send Text</span>
+                  </a>
+                </div>
+
+                <div className="pt-2 border-t border-[#1E3A5F]/70 text-xs text-slate-300 space-y-1">
+                  <a
+                    href={CONTACT_INFO.emailMailto}
+                    className="flex items-center gap-2 text-slate-300 hover:text-white break-all transition-colors"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-[#1677FF] shrink-0" />
+                    <span>{CONTACT_INFO.email}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2 space-y-3">
               <button
                 onClick={() => handleLinkClick('get-started')}
                 className="w-full flex items-center justify-center gap-2 px-4 py-3.5 text-base font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded-md transition-colors shadow-sm min-h-[48px]"

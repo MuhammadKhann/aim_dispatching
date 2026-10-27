@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageId } from '../types';
-import { Mail, Clock, MessageSquare, CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Mail, Clock, MessageSquare, CheckCircle, ArrowRight, ShieldCheck, Phone, Globe, ExternalLink, Send } from 'lucide-react';
+import { CONTACT_INFO } from '../data/contact';
 
 interface ContactPageProps {
   onNavigate: (page: PageId) => void;
@@ -35,26 +36,26 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
     <div className="space-y-0">
       
       {/* 1. HERO HEADER */}
-      <section className="bg-[#0B1F33] text-white py-16 sm:py-20 border-b border-[#1E3A5F]">
+      <section className="bg-[#0B1F33] text-white py-12 sm:py-16 lg:py-20 border-b border-[#1E3A5F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#1677FF] bg-[#1677FF]/10 px-3 py-1 rounded inline-block">
               Get In Touch
             </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Contact AIM Dispatching
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Have questions about our dispatching services? Our contact information will be available here soon.
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
+              Have questions about our dispatching services, freight rates, or carrier onboarding? Connect directly with our dispatch operations desk by phone, text, or email.
             </p>
           </div>
         </div>
       </section>
 
       {/* 2. CONTACT LAYOUT */}
-      <section className="py-16 bg-[#F5F7FA] border-b border-slate-200">
+      <section className="py-12 sm:py-16 bg-[#F5F7FA] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             
             {/* Left 5 cols: Corporate Contact Status & Notice */}
             <div className="lg:col-span-5 space-y-6">
@@ -62,44 +63,108 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               <div className="bg-white border border-slate-200 rounded-lg p-6 sm:p-8 space-y-6 shadow-xs">
                 <div>
                   <h2 className="text-xl font-bold text-[#0B1F33]">
-                    Carrier Communications
+                    Official Carrier Desk
                   </h2>
                   <p className="text-xs text-[#667085] mt-1">
-                    Direct dispatch desk for owner-operators and fleet inquiries.
+                    Direct communication lines for owner-operators, independent drivers, and fleet dispatch inquiries.
                   </p>
                 </div>
 
-                {/* Important verified note according to brief */}
-                <div className="p-4 bg-[#F5F7FA] border border-slate-200 rounded-md space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#0B1F33]">
-                    <Clock className="w-4 h-4 text-[#1677FF]" />
-                    <span>Official Contact Details Announcement</span>
+                {/* Primary Card: Phone & SMS */}
+                <div className="p-4 sm:p-5 bg-[#0B1F33] text-white rounded-lg space-y-3 shadow-xs border border-[#1E3A5F]">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-semibold text-slate-300 uppercase tracking-wider">
+                      Direct Dispatch Hotline
+                    </span>
+                    <span className="text-[10px] bg-[#1677FF]/30 text-white font-medium px-2 py-0.5 rounded border border-[#1677FF]/40">
+                      Call or Text
+                    </span>
                   </div>
-                  <p className="text-xs text-[#667085] leading-relaxed">
-                    Have questions about our dispatching services? Our direct phone numbers, dedicated dispatch email lines, and operations back-office contact information will be available here soon.
-                  </p>
+
+                  <div>
+                    <a
+                      href={CONTACT_INFO.phoneTel}
+                      className="text-2xl font-extrabold tracking-tight text-white hover:text-[#1677FF] transition-colors block"
+                    >
+                      {CONTACT_INFO.phone}
+                    </a>
+                    <p className="text-xs text-slate-400 mt-1">
+                      Fast load assistance, driver support, and lane availability.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 pt-1">
+                    <a
+                      href={CONTACT_INFO.phoneTel}
+                      className="flex items-center justify-center gap-1.5 px-3 py-2.5 text-xs font-semibold text-white bg-[#1677FF] hover:bg-[#0e63d8] rounded transition-colors text-center"
+                    >
+                      <Phone className="w-3.5 h-3.5" />
+                      <span>Call Now</span>
+                    </a>
+                    <a
+                      href={CONTACT_INFO.phoneSms}
+                      className="flex items-center justify-center gap-1.5 px-3 py-2.5 text-xs font-semibold text-slate-200 bg-[#152B42] hover:bg-[#1E3A5F] border border-[#1E3A5F] rounded transition-colors text-center"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 text-[#1677FF]" />
+                      <span>Send Text</span>
+                    </a>
+                  </div>
                 </div>
 
-                <div className="space-y-4 pt-2">
-                  <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded bg-[#F5F7FA] border border-slate-200 flex items-center justify-center text-[#1677FF] shrink-0 mt-0.5">
+                {/* Secondary Cards: Email & Website */}
+                <div className="space-y-3 pt-1">
+                  
+                  {/* Email */}
+                  <div className="flex items-start gap-3 p-3.5 bg-[#F5F7FA] border border-slate-200 rounded-md">
+                    <div className="w-9 h-9 rounded bg-white border border-slate-200 flex items-center justify-center text-[#1677FF] shrink-0 mt-0.5">
                       <Mail className="w-4 h-4" />
                     </div>
-                    <div className="text-xs">
-                      <div className="font-semibold text-[#0B1F33]">Official Carrier Inquiries</div>
-                      <div className="text-[#667085]">Dedicated email addresses will be published here upon official launch.</div>
+                    <div className="text-xs min-w-0 flex-1">
+                      <div className="font-bold text-[#0B1F33]">Email Dispatch Support</div>
+                      <a
+                        href={CONTACT_INFO.emailMailto}
+                        className="text-xs sm:text-sm font-semibold text-[#1677FF] hover:underline break-all block mt-0.5"
+                      >
+                        {CONTACT_INFO.email}
+                      </a>
+                      <div className="text-[#667085] text-[11px] mt-0.5">Send carrier packets, rate con copies, and inquiries.</div>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded bg-[#F5F7FA] border border-slate-200 flex items-center justify-center text-[#1677FF] shrink-0 mt-0.5">
-                      <MessageSquare className="w-4 h-4" />
+                  {/* Official Website */}
+                  <div className="flex items-start gap-3 p-3.5 bg-[#F5F7FA] border border-slate-200 rounded-md">
+                    <div className="w-9 h-9 rounded bg-white border border-slate-200 flex items-center justify-center text-[#1677FF] shrink-0 mt-0.5">
+                      <Globe className="w-4 h-4" />
                     </div>
-                    <div className="text-xs">
-                      <div className="font-semibold text-[#0B1F33]">Dispatch Operating Hours</div>
-                      <div className="text-[#667085]">Monday – Friday: 7:00 AM – 7:00 PM EST<br />Emergency Driver Road Support: 24/7 Available for active loads</div>
+                    <div className="text-xs min-w-0 flex-1">
+                      <div className="font-bold text-[#0B1F33]">Official Web Portal</div>
+                      <a
+                        href={CONTACT_INFO.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs sm:text-sm font-semibold text-[#1677FF] hover:underline inline-flex items-center gap-1 mt-0.5 break-all"
+                      >
+                        <span>{CONTACT_INFO.websiteDisplay}</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                      <div className="text-[#667085] text-[11px] mt-0.5">Live web portal & online carrier onboarding.</div>
                     </div>
                   </div>
+
+                  {/* Operating Hours */}
+                  <div className="flex items-start gap-3 p-3.5 bg-[#F5F7FA] border border-slate-200 rounded-md">
+                    <div className="w-9 h-9 rounded bg-white border border-slate-200 flex items-center justify-center text-[#1677FF] shrink-0 mt-0.5">
+                      <Clock className="w-4 h-4" />
+                    </div>
+                    <div className="text-xs min-w-0 flex-1">
+                      <div className="font-bold text-[#0B1F33]">Dispatch Hours & Coverage</div>
+                      <div className="text-[#0B1F33] font-medium mt-0.5">{CONTACT_INFO.hours}</div>
+                      <div className="text-[#667085] text-[11px] mt-0.5 font-medium text-emerald-700">
+                        &bull; {CONTACT_INFO.support}
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
 
                 <div className="pt-4 border-t border-slate-100">
@@ -107,7 +172,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                     Ready to onboard your truck now?
                   </div>
                   <p className="text-xs text-[#667085] mb-3">
-                    You can view and preview our carrier setup form on the Get Started page.
+                    Submit your carrier details online to claim 1–3 free loads for qualifying new carriers.
                   </p>
                   <button
                     onClick={() => onNavigate('get-started')}
@@ -147,7 +212,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                       Message Received
                     </h3>
                     <p className="text-xs sm:text-sm text-[#667085] max-w-md mx-auto leading-relaxed">
-                      Thank you for contacting AIM Dispatching. This form demonstrates the direct carrier inquiry workflow. Our dispatch team will follow up promptly once active communication channels go live.
+                      Thank you for contacting AIM Dispatching. Your message has been received! Our dispatch desk will get back to you promptly. For immediate assistance or active loads, call or text us anytime at{' '}
+                      <a href={CONTACT_INFO.phoneTel} className="font-semibold text-[#1677FF] hover:underline">{CONTACT_INFO.phone}</a>{' '}
+                      or email{' '}
+                      <a href={CONTACT_INFO.emailMailto} className="font-semibold text-[#1677FF] hover:underline">{CONTACT_INFO.email}</a>.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}

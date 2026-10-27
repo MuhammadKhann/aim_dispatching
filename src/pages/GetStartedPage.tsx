@@ -9,8 +9,12 @@ import {
   Info, 
   ArrowRight,
   X,
-  FileCheck2
+  FileCheck2,
+  Phone,
+  Mail,
+  MessageSquare
 } from 'lucide-react';
+import { CONTACT_INFO } from '../data/contact';
 
 interface GetStartedPageProps {
   onNavigate: (page: PageId) => void;
@@ -128,6 +132,35 @@ export const GetStartedPage: React.FC<GetStartedPageProps> = ({ onNavigate }) =>
                 </p>
                 <div className="pt-2 text-[11px] text-slate-400 border-t border-[#1E3A5F]">
                   No upfront setup fees &bull; No forced dispatch
+                </div>
+              </div>
+
+              {/* Direct Dispatch Assistance Card */}
+              <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-xs space-y-3">
+                <div className="text-xs font-bold text-[#0B1F33] flex items-center justify-between">
+                  <span>Need Immediate Dispatch?</span>
+                  <span className="text-[10px] text-[#1677FF] bg-[#1677FF]/10 px-2 py-0.5 rounded font-semibold">
+                    Live Desk
+                  </span>
+                </div>
+                <p className="text-xs text-[#667085] leading-relaxed">
+                  Have urgent freight or questions about onboarding? Speak directly with our dispatchers.
+                </p>
+                <div className="space-y-2 pt-1">
+                  <a
+                    href={CONTACT_INFO.phoneTel}
+                    className="flex items-center gap-2 text-xs font-bold text-[#0B1F33] hover:text-[#1677FF] transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-[#1677FF] shrink-0" />
+                    <span>Call or Text: {CONTACT_INFO.phone}</span>
+                  </a>
+                  <a
+                    href={CONTACT_INFO.emailMailto}
+                    className="flex items-center gap-2 text-xs text-[#667085] hover:text-[#0B1F33] transition-colors break-all"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-[#1677FF] shrink-0" />
+                    <span>{CONTACT_INFO.email}</span>
+                  </a>
                 </div>
               </div>
 

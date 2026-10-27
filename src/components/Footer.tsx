@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
-import { ArrowRight, ShieldCheck, Check } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Check, Phone, Mail, Globe, MessageSquare, ExternalLink } from 'lucide-react';
+import { CONTACT_INFO } from '../data/contact';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -127,24 +128,61 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </ul>
           </div>
 
-          {/* Column 4: Operational Standards (Spans 3 columns) */}
+          {/* Column 4: Official Contacts & Onboarding (Spans 3 columns) */}
           <div className="lg:col-span-3 space-y-4">
             <div className="text-xs font-semibold text-white uppercase tracking-wider">
-              Operational Standards
+              Official Contact Desk
             </div>
             
-            <ul className="space-y-2 text-xs text-slate-400">
-              <li className="flex items-start gap-2">
-                <Check className="w-3.5 h-3.5 text-[#1677FF] shrink-0 mt-0.5" />
-                <span><strong>6% to 8% per load:</strong> Transparent fee with no hidden add-ons.</span>
+            <ul className="space-y-3 text-xs text-slate-300">
+              <li>
+                <div className="text-slate-400 text-[11px] mb-0.5">Call or Text (24/7 Operations):</div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={CONTACT_INFO.phoneTel}
+                    className="inline-flex items-center gap-1.5 text-white hover:text-[#1677FF] font-semibold text-sm transition-colors"
+                  >
+                    <Phone className="w-4 h-4 text-[#1677FF] shrink-0" />
+                    <span>{CONTACT_INFO.phone}</span>
+                  </a>
+                  <a
+                    href={CONTACT_INFO.phoneSms}
+                    className="text-[11px] px-2 py-0.5 bg-[#152B42] text-slate-300 hover:text-white rounded border border-[#1E3A5F] transition-colors"
+                    title="Send SMS Text"
+                  >
+                    SMS
+                  </a>
+                </div>
               </li>
-              <li className="flex items-start gap-2">
-                <Check className="w-3.5 h-3.5 text-[#1677FF] shrink-0 mt-0.5" />
-                <span><strong>1–3 loads fee-free:</strong> Introductory offer for qualifying new carriers.</span>
+
+              <li>
+                <div className="text-slate-400 text-[11px] mb-0.5">Direct Dispatch Email:</div>
+                <a
+                  href={CONTACT_INFO.emailMailto}
+                  className="inline-flex items-center gap-1.5 text-slate-200 hover:text-white transition-colors break-all"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#1677FF] shrink-0" />
+                  <span>{CONTACT_INFO.email}</span>
+                </a>
               </li>
-              <li className="flex items-start gap-2">
-                <Check className="w-3.5 h-3.5 text-[#1677FF] shrink-0 mt-0.5" />
-                <span><strong>Direct broker pay:</strong> Payments go straight to your carrier account.</span>
+
+              <li>
+                <div className="text-slate-400 text-[11px] mb-0.5">Official Website:</div>
+                <a
+                  href={CONTACT_INFO.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[#1677FF] hover:underline"
+                >
+                  <Globe className="w-3.5 h-3.5 shrink-0" />
+                  <span>{CONTACT_INFO.websiteDisplay}</span>
+                  <ExternalLink className="w-3 h-3 ml-0.5" />
+                </a>
+              </li>
+
+              <li className="pt-1 text-[11px] text-slate-400 flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5 text-[#1677FF] shrink-0" />
+                <span>6% to 8% fee &bull; 1–3 free loads offer</span>
               </li>
             </ul>
 
@@ -161,13 +199,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         </div>
 
-        {/* Clean, Quiet Bottom Bar */}
+        {/* Clean, Quiet Bottom Bar with Official Domain */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>
-            &copy; {new Date().getFullYear()} AIM Dispatching. All rights reserved. Professional commercial truck dispatching.
-          </p>
-          <p className="text-slate-400 text-center sm:text-right">
-            Offer availability and number of fee-free loads (1–3) may vary based on carrier equipment and agreement.
+          <div className="space-y-1 text-center sm:text-left">
+            <p>
+              &copy; {new Date().getFullYear()} AIM Dispatching. All rights reserved. Professional commercial truck dispatching.
+            </p>
+            <p className="text-slate-500 text-[11px]">
+              Website: <a href={CONTACT_INFO.website} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white underline">{CONTACT_INFO.website}</a> &bull; Call/Text: <a href={CONTACT_INFO.phoneTel} className="text-slate-400 hover:text-white">{CONTACT_INFO.phone}</a> &bull; Email: <a href={CONTACT_INFO.emailMailto} className="text-slate-400 hover:text-white">{CONTACT_INFO.email}</a>
+            </p>
+          </div>
+          <p className="text-slate-500 text-center sm:text-right text-[11px] max-w-sm">
+            Standard dispatch fee 6%–8%. Introductory 1–3 fee-free loads offer applies to qualifying new carriers upon agreement.
           </p>
         </div>
 

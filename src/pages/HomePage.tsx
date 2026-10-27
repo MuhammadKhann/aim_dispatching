@@ -13,8 +13,12 @@ import {
   Headphones, 
   FileCheck,
   Compass,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Phone,
+  Mail,
+  MessageSquare
 } from 'lucide-react';
+import { CONTACT_INFO } from '../data/contact';
 
 interface HomePageProps {
   onNavigate: (page: PageId) => void;
@@ -424,7 +428,48 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </button>
           </div>
 
-          <div className="pt-6 text-xs text-slate-400">
+          {/* Official Direct Contact Bar */}
+          <div className="pt-8 border-t border-[#1E3A5F] max-w-2xl mx-auto">
+            <div className="bg-[#12263F] border border-[#1E3A5F] rounded-lg p-5 sm:p-6 text-center space-y-3">
+              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                Direct Dispatch Communications Desk
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-1">
+                <div className="flex items-center gap-2">
+                  <a
+                    href={CONTACT_INFO.phoneTel}
+                    className="inline-flex items-center gap-2 text-base sm:text-lg font-bold text-white hover:text-[#1677FF] transition-colors"
+                  >
+                    <Phone className="w-4 h-4 text-[#1677FF]" />
+                    <span>{CONTACT_INFO.phone}</span>
+                  </a>
+                  <a
+                    href={CONTACT_INFO.phoneSms}
+                    className="text-[11px] font-medium text-slate-300 hover:text-white bg-[#152B42] hover:bg-[#1E3A5F] px-2 py-1 rounded border border-[#1E3A5F] transition-colors"
+                  >
+                    Call / Text
+                  </a>
+                </div>
+
+                <span className="hidden sm:inline text-slate-600">&bull;</span>
+
+                <a
+                  href={CONTACT_INFO.emailMailto}
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm text-slate-300 hover:text-white transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-[#1677FF]" />
+                  <span>{CONTACT_INFO.email}</span>
+                </a>
+              </div>
+
+              <div className="text-[11px] text-slate-400">
+                {CONTACT_INFO.hours} &bull; {CONTACT_INFO.support}
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-2 text-xs text-slate-400">
             Qualifying new carriers can receive 1–3 loads with zero dispatch fee.
           </div>
         </div>
